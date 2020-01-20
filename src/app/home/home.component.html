@@ -1,0 +1,67 @@
+<div class="head">
+    <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Filter</button>
+
+</div>
+<hr>
+
+<div class="tablee">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th *ngIf="value;else nxt" scope="col">First</th>
+            <ng-template #nxt></ng-template>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td *ngIf="value;else nxt" >Mark</td>
+            <ng-template #nxt></ng-template>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td *ngIf="value;else nxt">Jacob</td>
+            <ng-template #nxt></ng-template>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td *ngIf="value;else nxt">Larry</td>
+            <ng-template #nxt></ng-template>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+    
+      
+
+</div>
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Filter options</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div *ngFor="let control of choices2.controls;let i=index">
+            <input type="checkbox" [formControl]="control"  />{{choices[i]}}
+        </div>
+      
+      
+            
+              <button class="btn btn-outline-secondary calendar" (click)="selected()" (click)="modal.close('Save click')"  type="button">Submit</button>
+            </div>
+          
+        
+      
+        
+    
+  </ng-template>
